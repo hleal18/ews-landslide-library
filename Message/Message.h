@@ -3,13 +3,12 @@
 
 //typedef char uint8_t;
 #include <Arduino.h>
-//#include "VariableType.h"
-#include "VariableType/VariableType.h";
-
+#include "VariableType.h"
+#include <stdint.h>
 class Message
 {
 public:
-    Message(){};
+    Message() : _content(new uint8_t[INITIAL_SIZE]){};
     Message(int varId, VariableType varType) : _varId(varId), _varType(varType){};
     Message(const Message &msg);
     ~Message() { delete[] _content; };
@@ -28,7 +27,7 @@ private:
 
     int _varId;
     VariableType _varType;
-    uint8_t *_content = new uint8_t[INITIAL_SIZE];
+    uint8_t *_content;
     int _content_size = 0;
 };
 
