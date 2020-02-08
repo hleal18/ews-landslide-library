@@ -16,6 +16,7 @@ public:
     Message createAccelerationMessage(int var_id, VariableType var_type, uint8_t x, uint8_t y, uint8_t z);
     Message createInclinationMessage(int var_id, VariableType var_type, uint8_t x, uint8_t y);
     Message createSoilMoistureMessage(int var_id, VariableType var_type, uint8_t soil_moisture);
+    Message createWaterLevelMessage(int var_id, VariableType var_type, uint8_t water_level);
 
 private:
     MessageBuilder _builder;

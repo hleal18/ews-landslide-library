@@ -32,3 +32,10 @@ Message MessageBuilderManager::createSoilMoistureMessage(int var_id, VariableTyp
     _builder.buildContentByte(soil_moisture);
     return _builder.createMessage();
 }
+
+Message MessageBuilderManager::createWaterLevelMessage(int var_id, VariableType var_type, uint8_t water_level)
+{
+    _builder.buildHeader(var_id, var_type);
+    _builder.buildContentByte(water_level);
+    return _builder.createMessage();
+}
