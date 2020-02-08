@@ -3,8 +3,9 @@
 
 #include <MPU9255.h>
 
-template<typename T>
-struct Axis {
+template <typename T>
+struct Axis
+{
     T x;
     T y;
     T z;
@@ -24,7 +25,18 @@ public:
     Axis<int16_t> get_gyroscope_readings();
     Axis<int16_t> get_magnetometer_readings();
     int16_t get_pressure_sensor_readings();
-    
+
+    void sleep()
+    {
+        _mpu.sleep_enable();
+        _mpu.disable(magnetometer);
+    }
+    void wake_up()
+    {
+        _mpu.sleep_disable();
+        _mpu.enable(magnetometer);
+    }
+
     void set_accelerometer_scale(scales accelerometer_scale);
 
     Axis<double> get_acceleration();
@@ -36,9 +48,9 @@ private:
 
     MPU9255 _mpu;
     //BMP180 _pressure_sensor;
-    
+
     uint8_t _sda;
-    uint8_t _scl;   
+    uint8_t _scl;
 
     scales _accelerometer_scale;
     scales _gyroscope_scale;
