@@ -2,10 +2,13 @@
 
 Message::Message(const Message &msg)
 {
-    uint8_t *new_array = new uint8_t[msg._content_size];
+    uint8_t size = (msg._content_size > INITIAL_SIZE) ? msg._content_size : INITIAL_SIZE;
+
+    uint8_t *new_array = new uint8_t[size];
 
     _varId = msg._varId;
     _varType = msg._varType;
+    _content_size = msg._content_size;
 
     for (int i = 0; i < msg._content_size; i++)
     {
@@ -13,16 +16,17 @@ Message::Message(const Message &msg)
     }
 
     _content = new_array;
-    _content_size = msg._content_size;
 }
 
 Message &Message::operator=(const Message &msg)
 {
+    uint8_t size = (msg._content_size > INITIAL_SIZE) ? msg._content_size : INITIAL_SIZE;
+
+    uint8_t *new_array = new uint8_t[size];
+
     _varId = msg._varId;
     _varType = msg._varType;
     _content_size = msg._content_size;
-
-    uint8_t *new_array = new uint8_t[msg._content_size];
 
     for (int i = 0; i < msg._content_size; i++)
     {
