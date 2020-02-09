@@ -6,7 +6,7 @@ enum VariableType
     ACCELERATION = 0,
     ROTATION_RATE,
     SOIL_MOISTURE,
-    RAINFALL,
+    WATER_LEVEL,
     INCLINATION
 };
 
