@@ -9,7 +9,7 @@ class Message
 {
 public:
     Message() : _content(new uint8_t[INITIAL_SIZE]){};
-    Message(int varId, VariableType varType) : _varId(varId), _varType(varType){};
+    Message(int varId, VariableType varType) : _varId(varId), _varType(varType), _content(new uint8_t[INITIAL_SIZE]){};
     Message(const Message &msg);
     ~Message() { delete[] _content; };
 
